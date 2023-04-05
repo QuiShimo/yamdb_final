@@ -44,7 +44,7 @@ jobs:
           with:
             push: true
             tags: ${{ secrets.DOCKER_USERNAME }}/api_yamdb:v1.0
-            file: api_yamd/Dockerfile
+            file: api_yamdb/Dockerfile
 
   deploy:
       name: Deploy to remote server
