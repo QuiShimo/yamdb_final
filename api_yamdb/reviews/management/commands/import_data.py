@@ -1,16 +1,16 @@
 from csv import DictReader
 
 from django.core.management.base import BaseCommand
-
-from api_yamdb.settings import BASE_DIR
 from reviews.models import Category, Comments, Genre, GenreTitle, Review, Title
 from users.models import CustomUser
+
+from api_yamdb.settings import BASE_DIR
 
 
 class Command(BaseCommand):
     help = 'Импорт данных из csv файлов'
 
-    def ImportUser(self):
+    def import_user(self):
         if CustomUser.objects.exists():
             print('Данные для User уже загружены')
         else:
@@ -27,7 +27,7 @@ class Command(BaseCommand):
                     last_name=row['last_name'],)
             print('Данные для User загружены')
 
-    def ImportGenre(self):
+    def import_genre(self):
         if Genre.objects.exists():
             print('Данные для Genre уже загружены')
         else:
@@ -40,7 +40,7 @@ class Command(BaseCommand):
                     slug=row['slug'],)
             print('Данные для genre загружены')
 
-    def ImportCategory(self):
+    def import_category(self):
         if Category.objects.exists():
             print('Данные для Category уже загружены')
         else:
@@ -53,7 +53,7 @@ class Command(BaseCommand):
                     slug=row['slug'],)
             print('Данные для Category загружены')
 
-    def ImportTitle(self):
+    def import_title(self):
         if Title.objects.exists():
             print('Данные для Title уже загружены')
         else:
@@ -67,7 +67,7 @@ class Command(BaseCommand):
                     category=Category.objects.get(id=row['category']),)
             print('Данные для Title загружены')
 
-    def ImportGenreTitle(self):
+    def import_genre_title(self):
         if GenreTitle.objects.exists():
             print('Данные для GenreTitle уже загружены')
         else:
@@ -80,7 +80,7 @@ class Command(BaseCommand):
                     genre_id=row['genre_id'],)
             print('Данные для GenreTitle загружены')
 
-    def ImportReview(self):
+    def import_review(self):
         if Review.objects.exists():
             print('Данные для Review уже загружены')
         else:
@@ -96,7 +96,7 @@ class Command(BaseCommand):
                     pub_date=row['pub_date'],)
             print('Данные для Review загружены')
 
-    def ImportComments(self):
+    def import_comments(self):
         if Comments.objects.exists():
             print('Данные для Comments уже загружены')
         else:
@@ -112,10 +112,10 @@ class Command(BaseCommand):
             print('Данные для Comments загружены')
 
     def handle(self, *args, **kwargs):
-        self.ImportUser()
-        self.ImportGenre()
-        self.ImportCategory()
-        self.ImportTitle()
-        self.ImportGenreTitle()
-        self.ImportReview()
-        self.ImportComments()
+        self.import_user()
+        self.import_genre()
+        self.import_category()
+        self.import_title()
+        self.import_genre_title()
+        self.import_review()
+        self.import_comments()
