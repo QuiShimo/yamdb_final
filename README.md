@@ -23,13 +23,11 @@
     ```
 3. Отредактируйте файл nginx/default.conf и в строке server_name впишите IP виртуальной машины (сервера).
 4. Скопируйте подготовленные файлы docker-compose.yaml и nginx/default.conf из вашего проекта на сервер:
-
-5. Зайдите в репозиторий на локальной машине и отправьте файлы на сервер. 
-   ```
-   scp docker-compose.yaml <username>@<host>/home/<username>/docker-compose.yaml
-   sudo mkdir nginx
-   scp default.conf <username>@<host>/home/<username>/nginx/default.conf
-   ```
+```
+scp docker-compose.yaml <username>@<host>/home/<username>/docker-compose.yaml
+sudo mkdir nginx
+scp default.conf <username>@<host>/home/<username>/nginx/default.conf
+```
 
 В репозиторий на Гитхабе добавьте данные в Settings - Secrets - Actions secrets:
 * DOCKER_USERNAME - имя пользователя в DockerHub
